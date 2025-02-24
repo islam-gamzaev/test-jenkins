@@ -2,10 +2,10 @@ pipeline {
     agent any
     environment {
         EXAMPLE_VAR = """
-            ${sh(returnStdout = true, script = 'echo "YOUR EXAMPLE VAR"')}
+            ${sh(returnStdout: true, script: 'echo "YOUR EXAMPLE VAR"')}
         """
         EXIT_STATUS = """
-            ${sh(returnStatus = true, script = 'exit 1')}
+            ${sh(returnStatus: true, script: 'exit 1')}
         """
     }
     stages {
