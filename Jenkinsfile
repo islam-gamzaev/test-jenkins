@@ -9,6 +9,16 @@ pipeline {
         """
     }
     stages {
+        stage('Creds') {
+            steps {
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-id',
+                                                             keyFileVariable: 'GITHUB_PKEY_VAR',
+                                                             passphraseVariable: 'GITHUB_PASSPHRASE_VAR',
+                                                             usernameVariable: 'GITHUB_USERNAME_VAR')]) {
+                    sh 'env'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh 'pwd && ls -lh'
