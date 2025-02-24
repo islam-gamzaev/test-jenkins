@@ -14,7 +14,11 @@ pipeline {
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'github-id',
                                                              keyFileVariable: 'GITHUB_PKEY_VAR',
                                                              passphraseVariable: 'GITHUB_PASSPHRASE_VAR',
-                                                             usernameVariable: 'GITHUB_USERNAME_VAR')]) {
+                                                             usernameVariable: 'GITHUB_USERNAME_VAR'),
+                                           sshUserPrivateKey(credentialsId: 'github-id',
+                                                             keyFileVariable: 'GITHUB_PKEY_VAR_2',
+                                                             passphraseVariable: 'GITHUB_PASSPHRASE_VAR_2',
+                                                             usernameVariable: 'GITHUB_USERNAME_VAR_2')]) {
                     sh 'env'
                 }
             }
